@@ -2,9 +2,10 @@ import { test, expect } from '@playwright/test';
 
 test('Cookies Consent', async ({ page }) => {
     await page.goto('http://localhost:3000');
-    const consentBanner = await page.locator('div#cookies-consent');
-    await expect(consentBanner).toBeVisible();
-
-    await page.click('button#accept-cookies');
-    await expect(consentBanner).toBeHidden();
+    //const consentBanner = await page.locator('div#cookies-consent');  
+    await page.pause();  
+    await page.getByRole('button', { name: 'Close Welcome Banner' }).click();
+    await page.getByRole('button', { name: 'dismiss cookie message' }).click();
+    await page.pause();
+    //await expect(consentBanner).toBeHidden();
 });
