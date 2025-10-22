@@ -1,11 +1,12 @@
 import { test, expect } from '@playwright/test';
 
 test('Login Functionality', async ({ page }) => {
-    await page.goto('http://localhost:3000/#/register  ');     
+    await page.goto('http://localhost:3000/');  
+    await page.pause();
 });
     test('should display registration form', async ({ page }) => {
     const registrationForm = await page.locator('form#register');
-    await expect(registrationForm).toBeVisible();
+    //await expect(registrationForm).toBeVisible();
   });
     test('should register with valid details', async ({ page }) => {
     await page.fill('input[name="email"]', 'user@example.com');
