@@ -23,10 +23,13 @@ export default defineConfig({
   reporter: [['html', { outputFolder: 'playwright-report' }]],
   use: {
     baseURL: 'http://localhost:3000', // Adjust to your Juice Shop URL
-    headless: true,
+    headless: false,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
-    trace: 'on-first-retry'
+    launchOptions: {
+      slowMo: 100,    // adds stability to flaky transitions
+    },
+    trace: 'on',
   },
 
   /* Configure projects for major browsers */
@@ -35,22 +38,35 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-
     {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+       name: 'Search Tests',
+       testMatch: /.*search.spec.ts/,
+    },
+    {
+       name: 'Login Tests',
+       testMatch: /.*login.spec.ts/,
+    },
+    {
+       name: 'Cart Tests',
+       testMatch: /.*cart.spec.ts/,
     },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+
+    //{
+   //   name: 'firefox',
+   //   use: { ...devices['Desktop Firefox'] },
+   // },
+
+   // {
+    //  name: 'webkit',
+   //   use: { ...devices['Desktop Safari'] },
+   // },
 
     /* Test against mobile viewports. */
-     {
-       name: 'Mobile Chrome',
-       use: { ...devices['Pixel 6'] },
-     },
+   //  {
+    //   name: 'Mobile Chrome',
+    //   use: { ...devices['Pixel 6'] },
+   //  },
     // {
     //   name: 'Mobile Safari',
     //   use: { ...devices['iPhone 12'] },
