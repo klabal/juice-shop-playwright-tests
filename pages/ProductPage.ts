@@ -35,18 +35,20 @@ export class ProductPage {
 
     async search(term: string) {
         try {
-            await this.closeWelcomeBanner();
-            const searchInput = this.page.locator('#mat-input-1');
-           // await this.page.getByText('search').click();
-            await searchInput.waitFor({ state: 'visible' });
-            await searchInput.fill(term);
-            await searchInput.press('Enter');
+             await this.closeWelcomeBanner();
+            // Force open the search bar by clicking the parent (if mat-icon is inside a button or div)
+            await this.page.getByText('search').click();
+           // await this.page.pause(); // Debugging pause
+            await this.page.locator('#mat-input-1').click();
+            await this.page.locator('#mat-input-1').fill(term);
+            await this.page.keyboard.press('Enter');
             await this.page.waitForTimeout(500); // Let results load
             
         }
         catch(e){
             console.error('Search bar interaction failed:', e);
             await this.page.screenshot({ path: 'search-error.png' });
+            throw e;
         }
     }
 }
