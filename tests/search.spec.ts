@@ -1,7 +1,7 @@
 // tests/search.spec.ts
 import { test, expect } from '@playwright/test';
-import { ProductPage } from '../pages/ProductPage.ts';
-import { searchTerms } from '../utils/testData.ts';
+import { ProductPage } from '../pages/ProductPage';
+import { searchTerms } from '../utils/testData';
 
 
 test.describe('Product search test suite', () => {

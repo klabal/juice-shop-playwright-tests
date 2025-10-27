@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { ProductPage } from '../pages/ProductPage.ts';
-import { LoginPage } from '../pages/LoginPage.ts';
+import { ProductPage } from '../pages/ProductPage';
+import { LoginPage } from '../pages/LoginPage';
 
 test.describe('Cart functionality', () => {
     test('add item to cart and verify', async ({ page }) => {

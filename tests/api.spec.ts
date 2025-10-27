@@ -1,5 +1,6 @@
 import { test, expect, request as baseRequest} from '@playwright/test';
-import { xssTestData } from '../utils/testData.ts';
+import { xssTestData } from '../utils/testData';
+import { loginAsBasicUser } from '../utils/auth';
 
 
 let token: string;
@@ -119,7 +120,35 @@ test.describe('Juice Shop API Tests', () => {
       entry.comment.includes('Stored test')
     );
 
-    expect(found).toBeTruthy(); // 💥 Confirm XSS payload persisted in DB
+    expect(found).toBeTruthy(); // Confirm XSS payload persisted in DB
   });
 
+  test.describe('User enumeration vulnerability', () => {
+  test('should NOT leak user list to low-privilege account', async ({ request }) => {
+    const token = await loginAsBasicUser(request);
+
+    const res = await request.get('http://localhost:3000/rest/user/authentication-details', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    expect(res.status()).toBe(200); // This *should* be 403 if secure
+    const users = await res.json();
+
+   // console.log('[User list leaked to basic user]:', body);
+
+   // expect(Array.isArray(body)).toBe(true);  // Basic validation
+   // expect(body.length).toBeGreaterThan(1);  // It's leaking more than self
+    // Log or assert depending on test expectations
+
+    if (Array.isArray(users)) {
+      throw new Error('🔥 VULNERABILITY: User list leaked to low-privilege account!');
+    } else {
+      console.log('✅ No leak detected – secure response.');
+    }
+  
+    expect(Array.isArray(users)).toBe(false); // Vulnerability if true!
+  });
+});
 });
