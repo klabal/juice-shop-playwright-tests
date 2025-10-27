@@ -36,3 +36,20 @@ export const searchTerms = [
     // Edge-case tags
     '<script>', '{test}', '"search term"', '`template`'
 ];
+export const xssTestData = {
+    safeComment: "This is a normal comment.",
+
+    xssPayloadBasic: `<script>alert('Test alert')</script>`,
+    xssPayloadImage: `<img src=x onerror=alert('ImageXSS')>`,
+    xssPayloadEncoded: `&lt;script&gt;alert('XSS')&lt;/script&gt;`,
+    xssHarmlessPayload:`<img src=x onerror=alert('🍓')>`,
+
+    sqlInjectionPayload: `' OR '1'='1' --`,
+    malformedPayload: `><svg onload=alert(1)>`,
+
+    feedbackForm: {
+        comment: "Nice product!",
+        rating: 5,
+        captcha: ''
+    }
+};
