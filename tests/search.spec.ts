@@ -40,7 +40,7 @@ test.describe('Product search test suite', () => {
 
                 await productPage.search(term);
                 await page.pause();
-                const results = await page.locator('.mat-grid-tile'); // or whatever class shows results
+                const results = await page.locator('.mat-grid-tile'); 
                 const resultCount = await results.count();
                 console.log(`Term: "${term}" → Results: ${resultCount}`);
                 expect(resultCount).toBeGreaterThanOrEqual(0); // We just want it not to crash
