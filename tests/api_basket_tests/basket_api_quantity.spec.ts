@@ -15,7 +15,7 @@ async function loginAsBasicUser(apiContext: APIRequestContext): Promise<string> 
   const loginJson = await loginRes.json();
   const token = loginJson?.authentication?.token;
 
-  if (!token) throw new Error('❌ Failed to retrieve token from login response');
+  if (!token) throw new Error('Failed to retrieve token from login response');
 
   console.log(`🔐 Logged in as Jim. Token: ${token.slice(0, 12)}...`);
   return token;
@@ -38,7 +38,7 @@ test.beforeAll(async () => {
   });
 
   const dummyJson = await dummyAddRes.json();
-  console.log('🧪 Dummy BasketItem Response:', dummyJson);
+  console.log('Dummy BasketItem Response:', dummyJson);
 
   // Retrieve basket items and extract basketId
   const itemsRes = await context.get('http://localhost:3000/api/BasketItems', {
@@ -51,16 +51,16 @@ test.beforeAll(async () => {
   const firstItem = itemsJson?.data?.[0];
 
   if (!firstItem?.BasketId) {
-    console.error('💀 Full BasketItems response:\n', itemsJson);
-    throw new Error('🧨 No BasketId found in BasketItems');
+    console.error('Full BasketItems response:\n', itemsJson);
+    throw new Error('No BasketId found in BasketItems');
   }
 
   basketId = firstItem.BasketId;
-  console.log(`🧺 Inferred BasketId: ${basketId}`);
+  console.log(`Inferred BasketId: ${basketId}`);
 });
 
 test.describe('🧺 Basket API Tests - Isolated', () => {
-  test('✅ Add item to basket', async () => {
+  test('Add item to basket', async () => {
     const addRes = await context.post('http://localhost:3000/api/BasketItems', {
       headers: {
         Authorization: `Bearer ${userToken}`,

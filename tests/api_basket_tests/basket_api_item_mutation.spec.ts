@@ -24,8 +24,8 @@ test.beforeAll(async () => {
   expect(basketItemId).toBeTruthy();
 });
 
-test.describe('🧪 Basket Item Mutation Suite', () => {
-  test('🚨 Should NOT update someone else’s basket item', async ({ request }) => {
+test.describe('Basket Item Mutation Suite', () => {
+  test('Should NOT update someone else’s basket item', async ({ request }) => {
     const evilUpdate = await request.put(`/api/BasketItems/${basketItemId + 1}`, {
       headers: {
         Authorization: `Bearer ${userToken}`
@@ -38,7 +38,7 @@ test.describe('🧪 Basket Item Mutation Suite', () => {
     expect([401, 403, 500]).toContain(evilUpdate.status());
   });
 
-  test('🧯 Should reject abusive quantity (-10, 9999)', async ({ request }) => {
+  test('Should reject abusive quantity (-10, 9999)', async ({ request }) => {
     const overflowUpdate = await request.put(`/api/BasketItems/${basketItemId}`, {
       headers: {
         Authorization: `Bearer ${userToken}`
@@ -51,7 +51,7 @@ test.describe('🧪 Basket Item Mutation Suite', () => {
     expect(overflowUpdate.status()).toBeLessThan(500); // Or 400, depending on app logic
   });
 
-  test('🔁 Token Replay Attack (same token reused rapidly)', async ({ request }) => {
+  test('Token Replay Attack (same token reused rapidly)', async ({ request }) => {
     for (let i = 1; i <= 5; i++) {
       const replay = await request.put(`/api/BasketItems/${basketItemId}`, {
         headers: {
@@ -73,7 +73,7 @@ test.describe('🧪 Basket Item Mutation Suite', () => {
     expect(unauthUpdate.status()).toBe(401);
   });
 
-  test('😈 XSS Payload in quantity field', async ({ request }) => {
+  test('XSS Payload in quantity field', async ({ request }) => {
     const xssUpdate = await request.put(`/api/BasketItems/${basketItemId}`, {
       headers: {
         Authorization: `Bearer ${userToken}`
@@ -84,7 +84,7 @@ test.describe('🧪 Basket Item Mutation Suite', () => {
     });
 
     const text = await xssUpdate.text();
-    console.log('🧨 XSS Payload Response:\n', text);
+    console.log('XSS Payload Response:\n', text);
     expect(xssUpdate.status()).toBeGreaterThanOrEqual(400);
   });
 });
