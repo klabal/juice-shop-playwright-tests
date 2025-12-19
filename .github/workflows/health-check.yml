@@ -1,0 +1,32 @@
+name: API Health Check
+
+on:
+  schedule:
+    # Runs at 08:00 UTC every day
+    - cron: '0 8 * * *'
+  workflow_dispatch: # Allows you to run it manually for testing
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright (Chromium only for speed)
+        run: npx playwright install chromium --with-deps
+
+      - name: Run API Health Tests
+        # Use a grep flag to only run tests tagged with @api or in the api folder
+        run: npx playwright test tests/api/ --project=chromium
+
+      - name: Notify on Failure
+        if: failure()
+        run: echo "The Juice Shop API is down or unreachable!"
+        # Optional: You could add a Slack or Email notification step here
