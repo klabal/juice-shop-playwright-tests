@@ -44,14 +44,11 @@ To run this suite locally, ensure you have [Node.js](https://nodejs.org/) instal
    git clone [https://github.com/klabal/juice-shop-playwright-tests.git](https://github.com/klabal/juice-shop-playwright-tests.git)
    cd juice-shop-playwright-tests
 2. **Install dependencies**:
-  ```bash
     npm install
 3. **Run all tests**:
-    ```bash
     npx playwright test
 4. **View the report**:
-  ```bash
-  npx playwright show-report
+    npx playwright show-report
 
 ---
 
