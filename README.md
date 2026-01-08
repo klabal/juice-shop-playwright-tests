@@ -1,7 +1,5 @@
 # 🧃 OWASP Juice Shop Automation Suite
 
-![Playwright Tests](https://github.com/your-username/your-repo-name/actions/workflows/playwright.yml/badge.svg)
-
 A robust automation framework designed to test the [OWASP Juice Shop](https://owasp-juice.shop/). This suite leverages **Playwright** and **TypeScript** to deliver high-speed, reliable testing across both the frontend and the underlying REST API.
 
 ---
