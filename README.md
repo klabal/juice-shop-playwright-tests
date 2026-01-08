@@ -36,20 +36,6 @@ This project uses **GitHub Actions** to ensure code quality on every push and pu
 * **Multi-Browser Support:** Pre-configured for Chromium, Firefox, and WebKit.
 
 ---
-
-## 📁 Project Structure
-```text
-├── .github/workflows/   # GitHub Actions CI configuration
-├── tests/
-│   ├── api/             # Pure REST API validation tests
-│   └── ui/              # End-to-end UI automation flows
-├── page-objects/        # Reusable UI component abstractions
-├── utils/               # API clients and auth helpers
-├── playwright.config.ts # Global configuration
-└── package.json
-
----
-
 ## ✨ Quick installation
 To run this suite locally, ensure you have [Node.js](https://nodejs.org/) installed:
 
@@ -68,3 +54,17 @@ To run this suite locally, ensure you have [Node.js](https://nodejs.org/) instal
   npx playwright show-report
 
 ---
+
+## 📁 Project Structure
+```text
+├── .github/workflows/   # GitHub Actions CI configuration
+├── tests/
+│   ├── api/             # Pure REST API validation tests
+│   └── ui/              # End-to-end UI automation flows
+├── page-objects/        # Reusable UI component abstractions
+├── utils/               # API clients and auth helpers
+├── playwright.config.ts # Global configuration
+└── package.json
+
+
+
