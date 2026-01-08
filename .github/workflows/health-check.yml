@@ -21,16 +21,6 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install chromium --with-deps
 
-      # --- FIX STARTS HERE ---
-      - name: Start Juice Shop Server
-        # Starts the server in the background so the pipeline can continue
-        run: npm start & 
-        
-      - name: Wait for Juice Shop to be ready
-        # This prevents the "Connection Refused" error by waiting for port 3000
-        run: npx wait-on http://localhost:3000 --timeout 180000
-      # --- FIX ENDS HERE ---
-
       - name: Run API Health Tests
         run: npx playwright test tests/api/ --project=chromium
 
