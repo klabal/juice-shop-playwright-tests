@@ -28,7 +28,7 @@ jobs:
         
       - name: Wait for Juice Shop to be ready
         # This prevents the "Connection Refused" error by waiting for port 3000
-        run: npx wait-on http://localhost:3000 --timeout 60000
+        run: npx wait-on http://localhost:3000 --timeout 180000
       # --- FIX ENDS HERE ---
 
       - name: Run API Health Tests
