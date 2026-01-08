@@ -10,13 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4 # Updated to v4
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4 # Updated to v4
+        uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'npm' # This enables automatic caching of your node_modules
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
@@ -40,11 +40,19 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit == 'true'
         run: npx playwright install-deps
 
+      # --- START SERVER BEFORE RUNNING TESTS ---
+      - name: Start Juice Shop Server
+        run: npm start & 
+
+      - name: Wait for Juice Shop to be ready
+        # Ensures port 3000 is active before starting the test suite
+        run: npx wait-on http://localhost:3000 --timeout 60000
+
       - name: Run Playwright tests
         run: npx playwright test
 
       - name: Upload Playwright report
-        if: always() # This ensures the report is uploaded even if tests fail
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
