@@ -40,14 +40,6 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit == 'true'
         run: npx playwright install-deps
 
-      # --- START SERVER BEFORE RUNNING TESTS ---
-      - name: Start Juice Shop Server
-        run: npm start & 
-
-      - name: Wait for Juice Shop to be ready
-        # Ensures port 3000 is active before starting the test suite
-        run: npx wait-on http://localhost:3000 --timeout 180000
-
       - name: Run Playwright tests
         run: npx playwright test
 
