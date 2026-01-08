@@ -47,3 +47,24 @@ This project uses **GitHub Actions** to ensure code quality on every push and pu
 ├── utils/               # API clients and auth helpers
 ├── playwright.config.ts # Global configuration
 └── package.json
+
+---
+
+## ✨ Quick installation
+To run this suite locally, ensure you have [Node.js](https://nodejs.org/) installed:
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/klabal/juice-shop-playwright-tests.git](https://github.com/klabal/juice-shop-playwright-tests.git)
+   cd juice-shop-playwright-tests
+2. **Install dependencies**:
+  ```bash
+    npm install
+3. **Run all tests**:
+    ```bash
+    npx playwright test
+4. **View the report**:
+  ```bash
+  npx playwright show-report
+
+---
