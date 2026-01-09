@@ -15,7 +15,7 @@ export default defineConfig({
   reporter: [['list'], ['html', { open: 'never' }]],
   use: {
     trace: 'on-first-retry',
-    baseURL: 'https://juice-shop.herokuapp.com/#/',
+    baseURL: 'https://juice-shop.herokuapp.com',
   },
   projects: [
     {
