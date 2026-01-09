@@ -8,19 +8,15 @@ export class ProductPage {
         this.page = page;
     }
 
-
     async goto() {
         await this.page.goto('/#/search');
     }
    
-
-
     async addItemToCartByIndex(index: number) {
        // await this.page.getByRole('button', { name: 'Close Welcome Banner' }).click();
        await this.page.locator('mat-card').filter({ hasText: 'Apple Juice (1000ml)1.99¤Add' }).getByLabel('Add to Basket').click();
       //  await addButtons.nth(index).click();
     }
-
 
     async openCart() {
         await this.page.locator('button[aria-label="Show the shopping cart"]').click();
@@ -32,7 +28,6 @@ export class ProductPage {
         }
     }
     
-
     async search(term: string) {
         try {
              await this.closeWelcomeBanner();

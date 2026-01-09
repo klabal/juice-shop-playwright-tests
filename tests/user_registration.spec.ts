@@ -1,21 +1,19 @@
 import { test, expect } from '@playwright/test';
 
 test('Login functionality open site', async ({ page }) => {
-    await page.goto('http://localhost:3000/'); 
-    //check title 
-    //await page.pause();
+    await page.goto('https://juice-shop.herokuapp.com/#/'); 
 });
     test('should display registration form and submit user registration information', async ({ page }) => {
-      await page.goto('http://localhost:3000/');
+      await page.goto('https://juice-shop.herokuapp.com/#/');
       await page.pause();
       await page.getByRole('button', { name: 'Close Welcome Banner' }).click();
       await page.pause();
       await page.getByRole('button', { name: 'Show/hide account menu' }).click();
       await page.getByRole('menuitem', { name: 'Go to login page' }).click();
-      await page.goto('http://localhost:3000/#/login');
+      await page.goto('/#/login');
       await page.getByRole('link', { name: 'Not yet a customer?' }).click();
       //await expect(page.getByRole('heading', { name: 'User Registration' })).toBeVisible();
-      await page.goto('http://localhost:3000/#/register');
+      await page.goto('/#/register');
       await page.getByRole('textbox', { name: 'Email address field' }).click();
       await page.getByRole('textbox', { name: 'Email address field' }).fill('test2@example.com');
       await page.getByRole('textbox', { name: 'Email address field' }).press('Tab');
@@ -43,16 +41,16 @@ test('Login functionality open site', async ({ page }) => {
    // await expect(page).toHaveURL('http://localhost:3000/dashboard');
  // });
     test('should show error with existing email', async ({ page }) => {
-      await page.goto('http://localhost:3000/');
+      await page.goto('https://juice-shop.herokuapp.com/#/');
       await page.pause();
       await page.getByRole('button', { name: 'Close Welcome Banner' }).click();
       await page.pause();
       await page.getByRole('button', { name: 'Show/hide account menu' }).click();
       await page.getByRole('menuitem', { name: 'Go to login page' }).click();
-      await page.goto('http://localhost:3000/#/login');
+      await page.goto('h#/login');
       await page.getByRole('link', { name: 'Not yet a customer?' }).click();
       //await expect(page.getByRole('heading', { name: 'User Registration' })).toBeVisible();
-      await page.goto('http://localhost:3000/#/register');
+      await page.goto('#/register');
       await page.getByRole('textbox', { name: 'Email address field' }).click();
       await page.getByRole('textbox', { name: 'Email address field' }).fill('test2@example.com');
       await page.getByRole('textbox', { name: 'Email address field' }).press('Tab');
@@ -73,16 +71,16 @@ test('Login functionality open site', async ({ page }) => {
     
  });
     test('should show error with mismatched passwords', async ({ page }) => {
-      await page.goto('http://localhost:3000/');
+      await page.goto('http://www.juice-shop.heroku app.com/');
       await page.pause();
       await page.getByRole('button', { name: 'Close Welcome Banner' }).click();
       await page.pause();
       await page.getByRole('button', { name: 'Show/hide account menu' }).click();
       await page.getByRole('menuitem', { name: 'Go to login page' }).click();
-      await page.goto('http://localhost:3000/#/login');
+      await page.goto('#/login');
       await page.getByRole('link', { name: 'Not yet a customer?' }).click();
       //await expect(page.getByRole('heading', { name: 'User Registration' })).toBeVisible();
-      await page.goto('http://localhost:3000/#/register');
+      await page.goto('#/register');
       await page.getByRole('textbox', { name: 'Email address field' }).click();
       await page.getByRole('textbox', { name: 'Email address field' }).fill('user1@example.com');
       await page.getByRole('textbox', { name: 'Email address field' }).press('Tab');
@@ -102,8 +100,8 @@ test('Login functionality open site', async ({ page }) => {
       //await expect(errorMessage).toBeVisible();
   });
     test('should redirect to login page', async ({ page }) => {
-    await page.goto('http://localhost:3000/');  
+    await page.goto('/#/login');  
     await page.pause();
     await page.click('text=Already have an account? Log In');
-    await expect(page).toHaveURL('http://localhost:3000/#/login');
+    await expect(page).toHaveURL('#/login');
   });

@@ -1,14 +1,14 @@
     import { test, expect } from '@playwright/test';
 
     test('Welcome banner - first open of page', async ({ page }) => {
-        await page.goto('http://localhost:3000');
+        await page.goto('https://juice-shop.herokuapp.com/#/');
         await page.getByRole('button', { name: 'Close Welcome Banner' }).click();
         await page.pause();  
 
     });
 
     test('Change Language Functionality', async ({ page }) => {
-        await page.goto('http://localhost:3000');   
+        await page.goto('https://juice-shop.herokuapp.com/#/');   
         await page.pause();  
          await page.getByRole('button', { name: 'Close Welcome Banner' }).click();
         await page.getByRole('button', { name: 'Language selection menu' }).click();

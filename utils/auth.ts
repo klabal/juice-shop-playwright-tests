@@ -1,7 +1,8 @@
 import { expect, Page, APIRequestContext } from '@playwright/test';
 
 export async function loginAsBasicUser(request: APIRequestContext):Promise<string> {
-  const res = await request.post('http://localhost:3000/rest/user/login', {
+  const res = await request.post('https://juice-shop.herokuapp.com/#//rest/user/login',
+     {
     data: {
       email: 'jim@juice-sh.op',  // use a known non-admin
       password: 'ncc-1701'
@@ -23,20 +24,21 @@ export async function loginAsBasicUser(request: APIRequestContext):Promise<strin
 
 // For UI tests
 export async function loginAsBasicUserViaUi(page: Page) {
-  await page.goto('http://localhost:3000/#/login');
+  await page.goto('/#/login');
+
   await page.fill('#email', 'jim@juice-sh.op');
   await page.fill('#password', 'ncc-1701');
   await page.click('#loginButton');
   await expect(page).toHaveURL(/\/#/);
    // Navigate directly after login
-  await page.goto('http://localhost:3000/#/complain');
+  await page.goto('/#/complain');
  // await expect(page).toHaveURL(/\/complain/);
   // await page.pause();
 }
 
 
 export async function loginAsAdmin(page: Page) {
-  await page.goto('http://localhost:3000/#/login')
+  await page.goto('https://juice-shop.herokuapp.com/#//#/login')
   await page.fill('#email', 'admin@juice-sh.op')
   await page.fill('#password', 'admin123') // or whatever creds you use
   await page.locator('#loginButton').click()

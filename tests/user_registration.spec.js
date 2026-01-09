@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('Login Functionality', async ({ page }) => {
-    await page.goto('http://localhost:3000/');  
+    await page.goto('https://juice-shop.herokuapp.com/#/');  
     await page.pause();
 });
     test('should display registration form', async ({ page }) => {
@@ -13,7 +13,7 @@ test('Login Functionality', async ({ page }) => {
     await page.fill('input[name="password"]', 'password');
     await page.fill('input[name="confirmPassword"]', 'password');
     await page.click('button[type="submit"]');
-    await expect(page).toHaveURL('http://localhost:3000/dashboard');
+    await expect(page).toHaveURL('https://juice-shop.herokuapp.com/#/dashboard');
   });
     test('should show error with existing email', async ({ page }) => {
     await page.fill('input[name="email"]', 'user@example.com');
@@ -33,5 +33,5 @@ test('Login Functionality', async ({ page }) => {
   });
     test('should redirect to login page', async ({ page }) => {
     await page.click('text=Already have an account? Log In');
-    await expect(page).toHaveURL('http://localhost:3000/#/login');
+    await expect(page).toHaveURL('https://juice-shop.herokuapp.com/#/login');
   });

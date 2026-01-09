@@ -5,7 +5,7 @@ let userToken: string;
 let basketId: number;
 
 async function loginAsBasicUser(apiContext: APIRequestContext): Promise<string> {
-  const loginRes = await apiContext.post('http://localhost:3000/rest/user/login', {
+  const loginRes = await apiContext.post('https://juice-shop.herokuapp.com/#//rest/user/login', {
     data: {
       email: 'jim@juice-sh.op',
       password: 'ncc-1701',
@@ -26,7 +26,7 @@ test.beforeAll(async () => {
   userToken = await loginAsBasicUser(context);
 
   // Force Basket creation by adding a dummy product
-  const dummyAddRes = await context.post('http://localhost:3000/api/BasketItems', {
+  const dummyAddRes = await context.post('https://juice-shop.herokuapp.com/#/api/BasketItems', {
     headers: {
       Authorization: `Bearer ${userToken}`,
       'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ test.beforeAll(async () => {
   console.log('Dummy BasketItem Response:', dummyJson);
 
   // Retrieve basket items and extract basketId
-  const itemsRes = await context.get('http://localhost:3000/api/BasketItems', {
+  const itemsRes = await context.get('https://juice-shop.herokuapp.com/#/api/BasketItems', {
     headers: {
       Authorization: `Bearer ${userToken}`,
     },
@@ -61,7 +61,7 @@ test.beforeAll(async () => {
 
 test.describe('🧺 Basket API Tests - Isolated', () => {
   test('Add item to basket', async () => {
-    const addRes = await context.post('http://localhost:3000/api/BasketItems', {
+    const addRes = await context.post('https://juice-shop.herokuapp.com/#/api/BasketItems', {
       headers: {
         Authorization: `Bearer ${userToken}`,
         'Content-Type': 'application/json',

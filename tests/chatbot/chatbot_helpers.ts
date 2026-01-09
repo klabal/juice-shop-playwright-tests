@@ -15,7 +15,7 @@ export async function openChatbot(page: Page): Promise<void> {
 }
 
 export async function login(page: Page, username: string, password: string): Promise<void> {
-  await page.goto('http://localhost:3000/#/login');
+  await page.goto('/#/login');
   await page.fill('#email', username);
   await page.fill('#password', password);
   await page.click('button[type="submit"]');

@@ -5,7 +5,7 @@ let token: string;
 let myOrderId: any;
 let someoneElsesOrderId: any;
 
-test.describe('📦 Order Status API Carnage Edition™', () => {
+test.describe('📦 Order Status API™', () => {
 
   test.beforeAll(async ({ baseURL }) => {
     const reqContext = await request.newContext();
@@ -45,10 +45,6 @@ test.describe('📦 Order Status API Carnage Edition™', () => {
     // Fetch placed orders
     //const rawText = await ordersFetch.text();
 
-
-    
-    
-
    const ordersFetch = (await authReq.get(`/rest/orders`));
    console.log('🩸 /rest/orders status:', ordersFetch.status());
 
@@ -64,14 +60,10 @@ test.describe('📦 Order Status API Carnage Edition™', () => {
  }
     catch(e)
     {
-         console.error('❌ Failed to parse JSON. Response was probably HTML.');
+         console.error('❌ Failed to parse JSON. Response was HTML.');
         throw e;
     }
 
-
-
-    
-    
     console.log('✅ Someone Else\'s Order ID:', someoneElsesOrderId);
   });
 
@@ -94,8 +86,8 @@ test.describe('📦 Order Status API Carnage Edition™', () => {
 
     const statusCode = res.status();
     const body = await res.text();
-    console.log('🩸 Status Code:', statusCode);
-    console.log('🧾 Body:', body);
+    console.log('Status Code:', statusCode);
+    console.log('Body:', body);
 
     expect(statusCode).toBe(200);
     const json = JSON.parse(body);
