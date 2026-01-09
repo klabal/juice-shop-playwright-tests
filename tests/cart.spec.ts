@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 
-test('💳 Full checkout flow via UI (polished chaos edition)', async ({ page }) => {
+test('💳 Full checkout flow via UI', async ({ page }) => {
   // 🔐 Login
-  await page.goto('http://localhost:3000/#/login');
+  await page.goto('#/login');
   const closeBtn = page.locator('button[aria-label="Close Welcome Banner"]');
   if (await closeBtn.isVisible()) await closeBtn.click();
 

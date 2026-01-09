@@ -8,7 +8,7 @@ import {
 
 test.describe('Chatbot Battle Gauntlet™', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:3000');
+    await page.goto('https://juice-shop.herokuapp.com/#/');
     await login(page, 'admin@juice-sh.op', 'admin123');
     await closeWelcomeBannerIfVisible(page);
     await openChatbot(page);
@@ -56,7 +56,7 @@ test.describe('Chatbot Battle Gauntlet™', () => {
 
 test('Chat history does NOT persist after reload', async ({ page }) => {
   // Step 1: Go to contact page and open the chatbot
-  await page.goto('http://localhost:3000/#/chatbot');
+  await page.goto('/#/chatbot');
   //await openChatBot(page);
   await closeWelcomeBannerIfVisible(page);
 
@@ -81,7 +81,7 @@ test('Chat history does NOT persist after reload', async ({ page }) => {
 
   // Step 5: Reopen chatbot
  // await openChatBot(page);
-  await page.goto('http://localhost:3000/#/chatbot');
+  await page.goto('/#/chatbot');
   await closeWelcomeBannerIfVisible(page);
    const localData = await page.evaluate(() => {
   return JSON.stringify(localStorage);

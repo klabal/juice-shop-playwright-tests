@@ -35,7 +35,7 @@ test.describe('Product search test suite', () => {
         for (const term of searchTerms) {
             test(`Search term: "${term}"`, async ({ page }) => {
                 const productPage = new ProductPage(page);
-                await page.goto('http://localhost:3000'); // replace with actual URL
+                await page.goto('https://juice-shop.herokuapp.com/#/'); // replace with actual URL
                 await page.pause();
 
                 await productPage.search(term);

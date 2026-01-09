@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('Login Functionality', async ({ page }) => {
-    await page.goto('http://localhost:3000/login');     
+    await page.goto('https://juice-shop.herokuapp.com/#//login');     
 });
 
   test('should display login form', async ({ page }) => {
@@ -13,7 +13,7 @@ test('Login Functionality', async ({ page }) => {
     await page.fill('input[name="email"]', 'user@example.com');
     await page.fill('input[name="password"]', 'password');
     await page.click('button[type="submit"]');
-    await expect(page).toHaveURL('http://localhost:3000/dashboard');
+    await expect(page).toHaveURL('https://juice-shop.herokuapp.com/#/dashboard');
   });
 
   test('should show error with invalid credentials', async ({ page }) => {
@@ -26,5 +26,5 @@ test('Login Functionality', async ({ page }) => {
 
   test('should redirect to signup page', async ({ page }) => {
     await page.click('text=Sign Up');
-    await expect(page).toHaveURL('http://localhost:3000/signup');
+    await expect(page).toHaveURL('https://juice-shop.herokuapp.com/#/signup');
   });

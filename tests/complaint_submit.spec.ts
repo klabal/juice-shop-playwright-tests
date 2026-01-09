@@ -4,7 +4,7 @@ import { loginAsBasicUser, loginAsBasicUserViaUi } from '../utils/auth';
 
 test('Submit Complaint and Check Admin Feedback for XSS Payload', async ({ page}) => {
 
-await page.goto('http://localhost:3000');
+await page.goto('https://juice-shop.herokuapp.com/');
 const closeBtn = page.locator('button[aria-label="Close Welcome Banner"]');
   if (await closeBtn.isVisible()) {
     await closeBtn.click();
@@ -15,7 +15,7 @@ const closeBtn = page.locator('button[aria-label="Close Welcome Banner"]');
   
  // Fill and submit the form
 
-  await page.goto('http://localhost:3000/#/complain');
+  await page.goto('#/complain');
   
 
   // Fill in the complaint message  

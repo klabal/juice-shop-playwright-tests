@@ -35,7 +35,7 @@ async function closeWelcomeBannerIfVisible(page: Page): Promise<void> {
   }
 }
 async function login(page: Page, username: string, password: string): Promise<void> {
-    await page.goto('http://localhost:3000/#/login');
+    await page.goto('/#/login');
     await closeWelcomeBannerIfVisible(page);
     //await page.getByRole('button', { name: 'Close Welcome Banner' }).click();
     await page.pause();
@@ -93,7 +93,7 @@ test('Compare chatbot responses: user vs admin', async ({ page }) => {
   const userResponses = await getChatbotResponses(page, prompts);
 
   // Logout
-  await page.goto('http://localhost:3000/#/logout');
+  await page.goto('/#/logout');
   await page.waitForTimeout(1000);
 
   // Admin pass
