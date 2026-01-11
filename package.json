@@ -2,7 +2,9 @@
   "name": "juice-shop-playwright-tests",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+  "juice:start": "cd ../juice-shop && npm start",
+  "test:local": "npx playwright test --ui"},
   "keywords": [],
   "author": "",
   "license": "ISC",

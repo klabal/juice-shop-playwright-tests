@@ -44,7 +44,7 @@ jobs:
         env:
          # Replace this with your actual Heroku app URL
          HEROKU_URL: https://juice-shop.herokuapp.com
-        run: npx playwright test
+        run: npx playwright test --reporter=list
 
       - name: Upload Playwright report
         if: always()
