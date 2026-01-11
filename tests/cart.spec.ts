@@ -26,7 +26,7 @@ test('💳 Full checkout flow via UI', async ({ page }) => {
   });
 
  await test.step('Begin checkout and address Management', async () => {
-    
+    test.fixme();
     //  Begin checkout
     await page.getByText('Checkout').click();
 

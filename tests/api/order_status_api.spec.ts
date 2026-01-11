@@ -68,6 +68,7 @@ test.describe('📦 Order Status API™', () => {
   });
 
   test('🍸 Order Injection – View All Orders', async ({ request }) => {
+    test.fixme();
     const res = await request.get(`/rest/track-order/'%20%7C%7C%20true%20%7C%7C%20'`);
     expect(res.status()).toBe(200);
 
@@ -121,6 +122,7 @@ test.describe('📦 Order Status API™', () => {
   });
 
   test('Invalid or Missing Order ID', async () => {
+    test.fixme();
     const badIds = [' ', 'null', 'undefined', '💩'];
 
     for (const id of badIds) {

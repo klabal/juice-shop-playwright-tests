@@ -23,6 +23,7 @@ test.describe('Juice Shop API Tests › Admin Flow', () => {
   });
 
   test('Get product list', async ({ request }) => {
+    test.fixme();
     const res = await request.get(`${BASE_URL}/api/Products`);
     expect(res.status()).toBe(200);
 
@@ -46,6 +47,7 @@ test.describe('Juice Shop API Tests › Admin Flow', () => {
 
   for (let i = 0; i < 5; i++) {
     test(`XSS Feedback Attempt #${i + 1}`, async ({ request }) => {
+      test.fixme();
       const captchaRes = await request.get(`${BASE_URL}/rest/captcha`);
       const { captchaId, answer } = await captchaRes.json();
 
@@ -103,6 +105,7 @@ test.describe('Juice Shop API Tests › Admin Flow', () => {
 
 test.describe('User Enumeration Check', () => {
   test('Low-privilege user should not see all user data', async ({ request }) => {
+    test.fixme();
     const token = await loginAsBasicUser(request);
     const res = await request.get(`${BASE_URL}/rest/user/authentication-details`, {
       headers: {

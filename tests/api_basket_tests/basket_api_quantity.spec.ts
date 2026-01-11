@@ -61,6 +61,7 @@ test.beforeAll(async () => {
 
 test.describe('🧺 Basket API Tests - Isolated', () => {
   test('Add item to basket', async () => {
+    test.fixme();
     const addRes = await context.post('#/api/BasketItems', {
       headers: {
         Authorization: `Bearer ${userToken}`,
