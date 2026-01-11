@@ -4,7 +4,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests/',
-  timeout: 30 * 1000,
+  timeout: 60 * 1000,
   expect: {
     timeout: 5000,
   },
@@ -14,8 +14,9 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: [['list'], ['html', { open: 'never' }]],
   use: {
+    baseURL: process.env.HEROKU_URL || 'http://localhost:3000',
     trace: 'on-first-retry',
-    baseURL: 'https://juice-shop.herokuapp.com/#/',
+    navigationTimeout: 30000, // Extra buffer for Heroku
   },
   projects: [
     {

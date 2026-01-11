@@ -9,7 +9,7 @@ import {
 } from './chatbot_helpers';
 
 test('Chatbot Stress Test', async ({ page }) => {
-  await page.goto('https://juice-shop.herokuapp.com/#/');
+  await page.goto('/#/');
   await login(page, 'admin@juice-sh.op', 'admin123');
   await closeWelcomeBannerIfVisible(page);
   await openChatbot(page);

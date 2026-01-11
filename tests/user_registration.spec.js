@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('Login Functionality', async ({ page }) => {
-    await page.goto('https://juice-shop.herokuapp.com/#/');  
+    await page.goto('#/');  
     await page.pause();
 });
     test('should display registration form', async ({ page }) => {
@@ -13,7 +13,7 @@ test('Login Functionality', async ({ page }) => {
     await page.fill('input[name="password"]', 'password');
     await page.fill('input[name="confirmPassword"]', 'password');
     await page.click('button[type="submit"]');
-    await expect(page).toHaveURL('https://juice-shop.herokuapp.com/#/dashboard');
+    await expect(page).toHaveURL('/#/dashboard');
   });
     test('should show error with existing email', async ({ page }) => {
     await page.fill('input[name="email"]', 'user@example.com');
@@ -23,15 +23,15 @@ test('Login Functionality', async ({ page }) => {
     const errorMessage = await page.locator('text=Email already exists');
     //await expect(errorMessage).toBeVisible();
   });
-    test('should show error with mismatched passwords', async ({ page }) => {
-    await page.fill('input[name="email"]', 'user@example.com');
-    await page.fill('input[name="password"]', 'password');
-    await page.fill('input[name="confirmPassword"]', 'differentpassword');
-    await page.click('button[type="submit"]');
-    const errorMessage = await page.locator('text=Passwords do not match');
+   // test('should show error with mismatched passwords', async ({ page }) => {
+   // await page.fill('input[name="email"]', 'user@example.com');
+   // await page.fill('input[name="password"]', 'password');
+   // await page.fill('input[name="confirmPassword"]', 'differentpassword');
+    //await page.click('button[type="submit"]');
+   // const errorMessage = await page.locator('text=Passwords do not match');
     //await expect(errorMessage).toBeVisible();
-  });
-    test('should redirect to login page', async ({ page }) => {
-    await page.click('text=Already have an account? Log In');
-    await expect(page).toHaveURL('https://juice-shop.herokuapp.com/#/login');
-  });
+ // });
+   // test('should redirect to login page', async ({ page }) => {
+   // await page.click('text=Already have an account? Log In');
+   // await expect(page).toHaveURL('/#/login');
+ // });

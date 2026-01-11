@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 
 test('Login functionality open site', async ({ page }) => {
-    await page.goto('https://juice-shop.herokuapp.com/#/'); 
+    await page.goto('/#/'); 
 });
     test('should display registration form and submit user registration information', async ({ page }) => {
-      await page.goto('https://juice-shop.herokuapp.com/#/');
+      await page.goto('/#/');
       await page.pause();
       await page.getByRole('button', { name: 'Close Welcome Banner' }).click();
       await page.pause();
@@ -23,7 +23,7 @@ test('Login functionality open site', async ({ page }) => {
       await page.getByRole('textbox', { name: 'Field to confirm the password' }).press('Tab');
       await page.getByRole('switch', { name: 'Show password advice' }).press('Tab');
       await page.locator('.mat-mdc-text-field-wrapper.mdc-text-field.mdc-text-field--outlined.mdc-text-field--focused > .mat-mdc-form-field-flex > .mat-mdc-form-field-infix').click();
-      await expect(page.getByRole('listbox', { name: 'Selection list for the' })).toBeVisible();
+      await expect(page.getByRole('listbox', { name: 'Selection list' })).toBeVisible();
 
       await page.getByText('Your eldest siblings middle').click();
       await page.locator('.mat-mdc-form-field.mat-mdc-form-field-type-mat-input.mat-form-field-appearance-outline.mat-form-field-hide-placeholder > .mat-mdc-text-field-wrapper > .mat-mdc-form-field-flex > .mat-mdc-form-field-infix').click();
@@ -41,7 +41,7 @@ test('Login functionality open site', async ({ page }) => {
    // await expect(page).toHaveURL('http://localhost:3000/dashboard');
  // });
     test('should show error with existing email', async ({ page }) => {
-      await page.goto('https://juice-shop.herokuapp.com/#/');
+      await page.goto('#/');
       await page.pause();
       await page.getByRole('button', { name: 'Close Welcome Banner' }).click();
       await page.pause();
@@ -71,7 +71,7 @@ test('Login functionality open site', async ({ page }) => {
     
  });
     test('should show error with mismatched passwords', async ({ page }) => {
-      await page.goto('http://www.juice-shop.heroku app.com/');
+      await page.goto('/#/');
       await page.pause();
       await page.getByRole('button', { name: 'Close Welcome Banner' }).click();
       await page.pause();
@@ -97,7 +97,6 @@ test('Login functionality open site', async ({ page }) => {
       await page.getByRole('button', { name: 'Button to complete the' }).click();
       await page.click('button[type="submit"]');
       const errorMessage = await page.locator('text=Passwords do not match');
-      //await expect(errorMessage).toBeVisible();
   });
     test('should redirect to login page', async ({ page }) => {
     await page.goto('/#/login');  

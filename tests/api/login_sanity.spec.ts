@@ -1,7 +1,7 @@
 import { test, expect, request as globalRequest } from '@playwright/test';
 import { Buffer } from 'buffer';
 
-test('🧪 FULL Debug Login + Basket Fallback', async ({ request }) => {
+test('🧪 FULL Debug Login Basket Fallback', async ({ request }) => {
   const loginRes = await request.post('/rest/user/login', {
     data: {
       email: 'jim@juice-sh.op',

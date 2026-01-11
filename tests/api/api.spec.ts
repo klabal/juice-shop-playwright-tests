@@ -2,7 +2,7 @@ import { test, expect, request as baseRequest } from '@playwright/test';
 import { xssTestData } from '../../utils/testData';
 import { loginAsBasicUser } from '../../utils/auth';
 
-const BASE_URL = 'https://juice-shop.herokuapp.com/#/';
+const BASE_URL = '#/';
 
 test.describe('Juice Shop API Tests › Admin Flow', () => {
   let adminToken: string;

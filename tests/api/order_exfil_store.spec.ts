@@ -60,8 +60,6 @@ test('Exfiltrated Order Store › flip the first not-delivered order', async () 
   expect(targetOrder).toBeTruthy(); // catch null here
   const orderId = targetOrder?.id;
 
-
-  
   //expect(orderId).toBeTruthy(); // catch undefined or broken id
 
   console.log('Target order:', targetOrder);
@@ -77,7 +75,6 @@ test('Exfiltrated Order Store › flip the first not-delivered order', async () 
   if (!targetOrder) {
   console.warn('⚠️ No undelivered orders found to flip.');
   test.skip(); // Optional: clean skip instead of hard fail
-  // Or throw if you *want* it to fail loudly:
   // throw new Error('❌ No undelivered orders found to flip.');
 }
 

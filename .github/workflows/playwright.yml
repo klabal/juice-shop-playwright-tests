@@ -23,14 +23,14 @@ jobs:
 
       - name: Get Playwright version
         id: playwright-version
-        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('@playwright/test/package.json').version)")" >> $GITHUB_ENV
+        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('@playwright/test/package.json').version)")" >> $GITHUB_OUTPUT
 
       - name: Cache Playwright browsers
         uses: actions/cache@v4
         id: playwright-cache
         with:
           path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+          key: ${{ runner.os }}-playwright-${{ steps.playwright-version.outputs.PLAYWRIGHT_VERSION }}
 
       - name: Install Playwright browsers
         if: steps.playwright-cache.outputs.cache-hit != 'true'
@@ -41,6 +41,9 @@ jobs:
         run: npx playwright install-deps
 
       - name: Run Playwright tests
+        env:
+         # Replace this with your actual Heroku app URL
+         HEROKU_URL: https://juice-shop.herokuapp.com
         run: npx playwright test
 
       - name: Upload Playwright report

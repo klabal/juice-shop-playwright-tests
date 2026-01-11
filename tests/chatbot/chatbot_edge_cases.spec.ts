@@ -6,9 +6,9 @@ import {
   closeWelcomeBannerIfVisible,
 } from './chatbot_helpers';
 
-test.describe('Chatbot Battle Gauntlet™', () => {
+test.describe('Chatbot', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://juice-shop.herokuapp.com/#/');
+    await page.goto('#/');
     await login(page, 'admin@juice-sh.op', 'admin123');
     await closeWelcomeBannerIfVisible(page);
     await openChatbot(page);
@@ -26,7 +26,7 @@ test.describe('Chatbot Battle Gauntlet™', () => {
   } else {
     // Either sanitized or filtered
     console.log('🔒 Chatbot may have filtered input (not vulnerable)');
-    expect(reply).toContain('Sorry I couldn\'t understand'); // Soft check
+    expect(reply).toContain('Sorry I couldn\'t understand');
   }
 
  // expect(reply).toContain('<img');     // Confirm unescaped input
@@ -72,12 +72,9 @@ test('Chat history does NOT persist after reload', async ({ page }) => {
   // Step 3: Confirm it appears before reload
   const chatWindow = page.locator('#chat-window');
   await expect(chatWindow).toContainText(testMessage);
-  
 
   // Step 4: Reload page
   await page.reload();
-
- 
 
   // Step 5: Reopen chatbot
  // await openChatBot(page);
@@ -148,7 +145,5 @@ test.describe('Known Vulnerabilities Suite', () => {
     console.log('App is vulnerable to XSS. Payload echoed:', reply);
   });
 });
-
-
 
 });

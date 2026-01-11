@@ -45,9 +45,6 @@ export async function sendPromptAndGetReply(
 
   return await lastReplyLocator.textContent() ?? '';
 }
-
-
-
 type SpamPromptOptions = {
   delayTyping?: boolean;
   screenshotDir?: string;
@@ -64,8 +61,7 @@ export async function spamPrompts(page: Page, prompts: string[], opts: SpamPromp
     const prompt = prompts[i];
     console.log(`📤 Sending prompt: ${prompt}`);
 
-   const reply = await sendPromptAndGetReply(page, prompt, {
-  input,
+const reply = await sendPromptAndGetReply(page, prompt, {
   delayTyping: opts.delayTyping,
 });
 
