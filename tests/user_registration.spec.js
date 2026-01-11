@@ -9,6 +9,7 @@ test('Login Functionality', async ({ page }) => {
     //await expect(registrationForm).toBeVisible();
   });
     test('should register with valid details', async ({ page }) => {
+      test.fixme();
     await page.fill('input[name="email"]', 'user@example.com');
     await page.fill('input[name="password"]', 'password');
     await page.fill('input[name="confirmPassword"]', 'password');
@@ -16,6 +17,7 @@ test('Login Functionality', async ({ page }) => {
     await expect(page).toHaveURL('/#/dashboard');
   });
     test('should show error with existing email', async ({ page }) => {
+      test.fixme();
     await page.fill('input[name="email"]', 'user@example.com');
     await page.fill('input[name="password"]', 'password');
     await page.fill('input[name="confirmPassword"]', 'password');

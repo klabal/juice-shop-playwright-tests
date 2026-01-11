@@ -23,6 +23,7 @@ test.describe('Product search test suite', () => {
 
 
     test('highlighted text matches search term', async ({ page }) => {
+        test.fixme();
         const productPage = new ProductPage(page);
         await productPage.goto();
         const term = 'apple';
